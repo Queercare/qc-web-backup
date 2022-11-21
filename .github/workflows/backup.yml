@@ -9,8 +9,6 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v3
-       - name: Wipe
-         run: rm -r ./*
        - name: Download-website
          run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N
        - name: Commit results back
