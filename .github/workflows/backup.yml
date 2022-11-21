@@ -10,9 +10,9 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v3
        - name: Download-main-site
-         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N ||true
-       - name: Download-main-site
-         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'wiki.queercare.network' -e robots=off -N ||true
+         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N --reject-regex "\?" ||true
+       - name: Download-wiki
+         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent wget -r --reject-regex "(\?|Special)" 'wiki.queercare.network' -e robots=off
        - name: Commit results back
          uses: stefanzweifel/git-auto-commit-action@v4
          with:
