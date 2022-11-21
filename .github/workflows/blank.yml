@@ -1,0 +1,19 @@
+name: Backup 
+on:
+  schedule:
+    - cron:  '43 0 * * *'
+  workflow_dispatch:
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v3
+       - name: Wipe
+         run: rm -r ./*
+       - name: Download-website
+         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N
+       - name: Commit results back
+         uses: stefanzweifel/git-auto-commit-action@v4
+         with:
+           commit_message: 'backed website'
