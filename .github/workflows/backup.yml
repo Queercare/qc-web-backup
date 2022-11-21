@@ -10,7 +10,7 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v3
        - name: Download-website
-         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N
+         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N ||true
        - name: Commit results back
          uses: stefanzweifel/git-auto-commit-action@v4
          with:
