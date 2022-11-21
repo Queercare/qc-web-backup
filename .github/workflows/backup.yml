@@ -12,7 +12,7 @@ jobs:
        - name: Download-main-site
          run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent 'queercare.network' -e robots=off -N --reject-regex "\?" ||true
        - name: Download-wiki
-         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent wget -r --reject-regex "(\?|Special)" 'wiki.queercare.network' -e robots=off
+         run: wget --mirror --convert-links --adjust-extension --page-requisites --no-parent wget -r --reject-regex "(\?|Special)" 'wiki.queercare.network' -e robots=off ||true
        - name: Commit results back
          uses: stefanzweifel/git-auto-commit-action@v4
          with:
